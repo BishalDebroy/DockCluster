@@ -1,8 +1,6 @@
-# DockCluster3D
+# DockCluster: COM‑based spatial clustering of docking poses.
 
-**COM‑based spatial clustering of docking poses** for AutoDock Vina (PDBQT) and AutoDock4 (DLG).
-
-DockCluster3D provides two standalone Python scripts that perform 3D clustering of ligand conformations based **only** on the **mass‑weighted center of mass (COM)** of each ligand. Clustering is transitive (connectivity‑based), with a default cutoff of **1.0 Å**.
+DockCluster provides two standalone Python scripts that perform 3D clustering of ligand conformations based **only** on the **mass‑weighted center of mass (COM)** of each ligand. Clustering is transitive (connectivity‑based), with a default cutoff of **1.0 Å**.
 
 ## Features
 
@@ -28,3 +26,35 @@ No external libraries are required. Ensure you have **Python 3.6 or later**.
 # Clone the repository
 git clone https://github.com/yourusername/DockCluster3D.git
 cd DockCluster3D
+```
+
+## Clustering of Vina outputs
+1. If target binding site is unknown,
+```
+python pcluster_Vina.py --input ./pdbqt_files --cutoff 2.0
+```
+2. if target binding site is known (eg. x=3.21 y=-5.24 z=17.92),
+```
+python pcluster_Vina.py --input ./pdbqt_files --target 3.21 5.24 17.92 --radius 1.0
+```
+3. For more options,
+```
+python pcluster_Vina.-py --help
+```
+
+## Clustering of AD4 outputs
+1. If target binding site is unknown
+```
+python pcluster_AD4.py --input docking.dlg --cutoff 2.0
+```
+
+If you use DockCluster in your research, please cite:
+```
+@misc{BishalDockCluster,
+  author       = {Bishal},
+  title        = {DockCluster3D: COM‑based spatial clustering of docking poses},
+  year         = {2026},
+  howpublished = {\url{https://github.com/BishalDebroy/Dockcluster}},
+  note         = {MIT License}
+}
+```
